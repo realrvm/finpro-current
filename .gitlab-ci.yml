@@ -20,7 +20,6 @@ angular-bnp:
     - docker push $ANGULAR_IMAGE
   only:
     - dev
-    - master
 
 angular-staging-deploy:
   stage: deploy
