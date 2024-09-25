@@ -1,0 +1,8 @@
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+.idea/
+.env
+celerybeat-schedule
