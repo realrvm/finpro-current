@@ -1,0 +1,39 @@
+image: registry.git.f7m.ru/docker-images/docker:origin
+
+variables:
+  ANGULAR_IMAGE: $CI_REGISTRY_IMAGE/angular:$CI_COMMIT_REF_NAME
+
+stages:
+  - do_images
+  - deploy
+
+angular-bnp:
+  stage: do_images
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $ANGULAR_IMAGE || true
+    - docker build
+      --cache-from $ANGULAR_IMAGE
+      --file ./deploy/angular/Dockerfile
+      --tag $ANGULAR_IMAGE
+      ./
+    - docker push $ANGULAR_IMAGE
+  only:
+    - dev
+    - master
+
+angular-staging-deploy:
+  stage: deploy
+  image: jonaskello/rancher-cli-k8s:v2.0.4
+  script:
+    - rancher login $RANCHER_API_URL --token $RANCHER_BEARER_TOKEN --context $RANCHER_STAGING_PROJECT
+    - (rancher kubectl patch deployment $RANCHER_FRONTEND_WORKLOAD
+        --namespace=$RANCHER_STAGING_NAMESPACE
+        --type=strategic
+        -v=8
+        -p "{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"$RANCHER_FRONTEND_WORKLOAD\",\"env\":[{\"name\":\"FORCE_RESTART_AT\",\"value\":\"$CI_PIPELINE_ID\"}]}]}}}}"
+      )
+  variables:
+    GIT_STRATEGY: none
+  only:
+    - dev
