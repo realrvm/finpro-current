@@ -1,0 +1,60 @@
+<p-sidebar #sidebarRef [visible]="sidebarVisible()" position="right" [fullScreen]="true">
+  <ng-template pTemplate="headless">
+    <fp-container>
+      <div class="py-5 flex items-center justify-between gap-2 tablet:gap-5">
+        <a routerLink="main">
+          <fp-logo-sm />
+        </a>
+        <button (click)="closeCallback($event)">
+          <fp-burger-close />
+        </button>
+      </div>
+    </fp-container>
+    <div class="bg-blue mb-10">
+      <fp-container>
+        <div class="px-3 py-10 grid grid-cols-1 tablet:grid-cols-2 max-w-[500px] gap-y-6">
+          @for (navItem of navItems; track $index) {
+            <a
+              routerLink="{{ navItem.path }}"
+              routerLinkActive="active-link"
+              class="text-white text-base text-left"
+              (click)="closeCallback($event)"
+              >{{ navItem.text }}</a
+            >
+          }
+        </div>
+      </fp-container>
+    </div>
+
+    <fp-container>
+      <div class="flex gap-4 items-center mb-5">
+        <fp-location-icon />
+        <span class="font-md">650064, г. Кемерово, пр-кт. Советский, д. 58</span>
+      </div>
+
+      <div class="flex gap-4 mb-5">
+        <div class="flex gap-4 items-center">
+          <fp-phone-icon />
+          <span class="font-md">+7 (384-2) 56-43-17</span>
+        </div>
+        <div class="flex gap-4 items-center">
+          <fp-email-icon />
+          <span class="font-md">sp&#64;ofukem.ru</span>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center mb-7">
+        <fp-www-icon />
+        <span class="font-md">ofukem.ru</span>
+      </div>
+
+      <fp-icon-button
+        label="Написать нам"
+        position="left"
+        icon="email-to"
+        className="bg-orange text-white hover:bg-active-orange h-10 w-[170px]"
+        (click)="redirectToEmail($event)"
+      />
+    </fp-container>
+  </ng-template>
+</p-sidebar>

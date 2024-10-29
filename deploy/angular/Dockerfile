@@ -1,1 +1,0 @@
-FROM yeasy/simple-web

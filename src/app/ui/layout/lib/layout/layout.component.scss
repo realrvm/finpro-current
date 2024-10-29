@@ -1,0 +1,12 @@
+:host {
+  @apply flex min-h-svh flex-col;
+}
+
+header,
+footer {
+  @apply shrink-0;
+}
+
+main {
+  @apply flex-1 overflow-x-hidden;
+}

@@ -1,0 +1,99 @@
+<fp-container>
+  <fp-breadcrumbs [items]="items" />
+  <fp-page-title [title]="title" />
+
+  <div class="flex flex-col tablet:flex-row desktop:flex-row gap-10">
+    <div class="tablet:w-2/3 desktop:w-2/3 flex flex-col">
+      <div class="flex flex-col tablet:flex-row desktop:flex-row flex-wrap gap-3 my-8">
+        @for (cat of categories(); track cat.id) {
+          <fp-plain-button
+            [label]="cat.title"
+            className="{{
+              cat.isActive
+                ? 'bg-orange text-white hover:bg-active-orange border-orange hover:border-active-orange'
+                : 'text-orange bg-transparent hover:border-orange'
+            }}  border border-grey-strok"
+            (click)="handleSortBtn(cat.id)"
+          />
+        } @empty {
+          <p>Загружается...</p>
+        }
+      </div>
+
+      <fp-search-input placeholder="Поиск публикаций" class="mb-16" />
+
+      <div class="mb-16 flex flex-col gap-6">
+        @for (post of posts(); track post.id) {
+          <ng-container
+            *ngTemplateOutlet="
+              publicationsPost;
+              context: {
+                $implicit: post.title,
+                id: post.id,
+                section: post.tags[0],
+                subtitle: post.subtitle,
+                image: post.image || 'https://placehold.co/600x400',
+                date: post.created_at,
+              }
+            "
+          />
+        } @empty {
+          <p>Загружается...</p>
+        }
+      </div>
+    </div>
+
+    <div class="tablet:w-1/3 desktop:w-1/3">
+      <h3 class="text-[28px] font-semibold mb-4">Главные новости</h3>
+      <div class="flex items-center mb-5">
+        <span class="h-1.5 bg-orange w-2/3"></span>
+        <span class="h-1.5 bg-blue w-1/3"></span>
+      </div>
+      <div class="mb-16">
+        @for (news of mainNews(); track news.id) {
+          <ng-container
+            *ngTemplateOutlet="
+              mainNewsCard;
+              context: {
+                $implicit: news.title,
+                date: news.created_at,
+                subtitle: news.subtitle,
+              }
+            "
+          />
+        }
+      </div>
+      <fp-subscription-form />
+    </div>
+  </div>
+</fp-container>
+
+<ng-template
+  #publicationsPost
+  let-title
+  let-id="id"
+  let-date="date"
+  let-tag="tag"
+  let-subtitle="subtitle"
+  let-image="image"
+>
+  <div class="bg-white flex flex-col pb-10 cursor-pointer" (click)="goToPost(id)" (keypress)="goToPost(id)" tabindex="0">
+    <div class="h-[239px] w-full relative mb-4">
+      <img [ngSrc]="image" alt="search result" class="object-cover" fill priority />
+    </div>
+    <div class="flex items-center gap-5 mb-4">
+      <span class="grid place-items-center w-[108px] h-[34px] bg-orange text-bkgrnd">{{ date }}</span>
+      <span class="text-orange text-md">{{ tag }}</span>
+    </div>
+    <h4 class="font-semibold text-[23px] leading-tight mb-5">{{ title }}</h4>
+    <p class="text-md leading-normal">{{ subtitle }}</p>
+  </div>
+</ng-template>
+
+<ng-template #mainNewsCard let-title let-date="date" let-subtitle="subtitle">
+  <div class="border-t border-t-light-grey flex flex-col py-9">
+    <span class="text-sm text-grey-indicator mb-3">{{ date }}</span>
+    <h4 class="font-semibold mb-7 text-[23px] leading-tight">{{ title }}</h4>
+    <span class="text-sm text-orange">{{ subtitle }}</span>
+  </div>
+</ng-template>

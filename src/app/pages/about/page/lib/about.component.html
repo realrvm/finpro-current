@@ -1,0 +1,6 @@
+<fp-container>
+  <fp-breadcrumbs [items]="items" />
+  <fp-page-title [title]="aboutData().title" />
+
+  <div [innerHTML]="aboutData().description | saveHtml" class="desktop:max-w-[900px] leading-7 mt-[50px]"></div>
+</fp-container>

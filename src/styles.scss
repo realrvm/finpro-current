@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'assets/theme2.scss';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+
+html {
+  @apply font-gilroy font-medium;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 15px;
+  background-color: var(--bkgrnd);
+}

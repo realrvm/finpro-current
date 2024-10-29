@@ -1,0 +1,66 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@env/*": ["src/environments/*"],
+      "@fp/core": ["src/app/core/index.ts"],
+      "@fp/ui/layout": ["src/app/ui/layout/index.ts"],
+      "@fp/ui/container": ["src/app/ui/container/index.ts"],
+      "@fp/ui/icons": ["src/app/ui/icons/index.ts"],
+      "@fp/ui/svg-icon": ["src/app/ui/svg-icon/index.ts"],
+      "@fp/ui/vi": ["src/app/ui/vi/index.ts"],
+      "@fp/ui/buttons": ["src/app/ui/buttons/index.ts"],
+      "@fp/ui/breadcrumbs": ["src/app/ui/breadcrumbs/index.ts"],
+      "@fp/ui/page-title": ["src/app/ui/page-title/index.ts"],
+      "@fp/ui/search-input": ["src/app/ui/search-input/index.ts"],
+      "@fp/ui/subscription-form": ["src/app/ui/subscription-form/index.ts"],
+      "@fp/pages/main": ["src/app/pages/main/page/index.ts"],
+      "@fp/pages/main/widgets": ["src/app/pages/main/ui/widgets/index.ts"],
+      "@fp/pages/services-for-business": ["src/app/pages/services-for-business/index.ts"],
+      "@fp/pages/services-for-investor": ["src/app/pages/services-for-investor/index.ts"],
+      "@fp/pages/market-participants": ["src/app/pages/market-participants/index.ts"],
+      "@fp/pages/projects-file": ["src/app/pages/projects-file/index.ts"],
+      "@fp/pages/publications": ["src/app/pages/publications/page/index.ts"],
+      "@fp/pages/publications/common": ["src/app/pages/publications/common/index.ts"],
+      "@fp/pages/publications/services": ["src/app/pages/publications/services/index.ts"],
+      "@fp/pages/potential-of-kuzbass": ["src/app/pages/potential-of-kuzbass/index.ts"],
+      "@fp/pages/services": ["src/app/pages/services/index.ts"],
+      "@fp/pages/about": ["src/app/pages/about/page/index.ts"],
+      "@fp/pages/about/common": ["src/app/pages/about/common/index.ts"],
+      "@fp/pages/about/services": ["src/app/pages/about/services/index.ts"],
+      "@fp/pages/history-of-success": ["src/app/pages/history-of-success/index.ts"],
+      "@fp/pages/privacy-policy": ["src/app/pages/privacy-policy/index.ts"],
+      "@fp/pages/contacts": ["src/app/pages/contacts/index.ts"],
+      "@fp/pages/not-found-page": ["src/app/pages/not-found-page/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

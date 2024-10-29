@@ -1,0 +1,11 @@
+<header>
+  <router-outlet name="header" />
+  <router-outlet name="nav" />
+  <fp-sidebar *fpResponsive="not_desktop" />
+</header>
+<main>
+  <router-outlet />
+</main>
+<footer>
+  <router-outlet name="footer" />
+</footer>

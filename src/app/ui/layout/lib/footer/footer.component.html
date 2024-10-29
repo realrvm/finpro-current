@@ -1,0 +1,65 @@
+<div class="bg-grey-tab py-7 table:py-[70px] desktop:py-[80px]">
+  <fp-container>
+    <div class="py-5 hidden tablet:flex desktop:flex items-center justify-between gap-2 tablet:gap-5 mb-20">
+      <a routerLink="/main">
+        <fp-logo-md />
+      </a>
+      <div class="flex items-center gap-2 tablet:gap-4">
+        <fp-search-input [isHeader]="false" />
+        <fp-vi />
+      </div>
+    </div>
+
+    <div class="hidden tablet:flex desktop:flex justify-between gap-20">
+      <div class="grid grid-cols-3 gap-y-7 tablet:gap-x-7 desktop:gap-x-20">
+        @for (navItem of navItems; track $index) {
+          <a routerLink="{{ navItem.path }}" class="text-base">{{ navItem.text }}</a>
+        }
+      </div>
+      <div class="flex flex-col gap-5">
+        <span class="font-md text-grey-subtitle">Партнёры:</span>
+        <div class="flex gap-4 flex-wrap">
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+          <img src="assets/images/img/mock-img.png" alt="mock img" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex tablet:hidden desktop:hidden flex-col gap-5">
+      <a routerLink="/main">
+        <fp-logo-sm />
+      </a>
+      <fp-vi />
+      @for (navItem of navItems; track $index) {
+        <a routerLink="{{ navItem.path }}" class="text-base">{{ navItem.text }}</a>
+      }
+      <fp-search-input [isHeader]="false" />
+      <div class="grid grid-cols-2 gap-4">
+        <img src="assets/images/img/mock-img.png" alt="mock img" />
+        <img src="assets/images/img/mock-img.png" alt="mock img" />
+        <img src="assets/images/img/mock-img.png" alt="mock img" />
+        <img src="assets/images/img/mock-img.png" alt="mock img" />
+      </div>
+    </div>
+  </fp-container>
+</div>
+
+<div class="bg-blue py-10 text-white font-md">
+  <fp-container>
+    <div class="flex flex-col tablet:flex-row desktop:flex-row tablet:items-center justify-between gap-6">
+      <span class="tablet:w-[55%] desktop:w-[70%]">
+        © 2024 «ФинПро» инструменты развития бизнеса. Все права защищены. Министерство финансов Кузбасса.
+      </span>
+      <div class="flex flex-col tablet:flex-row desktop:flex-row tablet:items-center desktop:items-center gap-8">
+        <img
+          src="assets/images/img/yandex-fake-counter.jpg"
+          alt="fake counter"
+          class="order-last desktop:order-first handset:self-end"
+        />
+        <a href="mailto:info@finpro.kemobl.ru" class="underline">info&#64;finpro.kemobl.ru</a>
+      </div>
+    </div>
+  </fp-container>
+</div>

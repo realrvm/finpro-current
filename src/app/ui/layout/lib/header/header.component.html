@@ -1,0 +1,15 @@
+<fp-container>
+  <div class="py-5 flex items-center justify-between gap-2 tablet:gap-5">
+    <a routerLink="/main">
+      <fp-logo-md *fpResponsive="desktop" />
+      <fp-logo-sm *fpResponsive="not_desktop" />
+    </a>
+    <div class="flex items-center gap-2 tablet:gap-4">
+      <fp-search-input *fpResponsive="not_handset" />
+      <fp-vi />
+      <button (click)="handleBurgerClick()" *fpResponsive="not_desktop">
+        <fp-burger-open />
+      </button>
+    </div>
+  </div>
+</fp-container>

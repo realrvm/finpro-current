@@ -1,0 +1,14 @@
+<div class="bg-blue desktop:h-[76px] items-center justify-center tablet:hidden desktop:flex">
+  <fp-container>
+    <nav class="py-5 flex items-center justify-between gap-6" *fpResponsive="not_handset">
+      @for (navItem of navItems; track $index) {
+        <a routerLink="{{ navItem.path }}" routerLinkActive="active-link" class="text-white text-base text-center">{{
+          navItem.text
+        }}</a>
+      }
+    </nav>
+    <div class="py-[14px]" *fpResponsive="handset">
+      <fp-search-input />
+    </div>
+  </fp-container>
+</div>

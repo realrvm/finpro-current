@@ -1,0 +1,10 @@
+:host {
+  @apply block;
+
+  .active-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: #f6775b;
+    text-underline-offset: 8px;
+  }
+}
