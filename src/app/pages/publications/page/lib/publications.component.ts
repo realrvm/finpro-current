@@ -2,6 +2,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core'
 import { Router } from '@angular/router'
 
+import { TagsPipe } from '@fp/core'
 import type { PublicationsCategory, PublicationsPost } from '@fp/pages/publications/common'
 import { PublicationsService } from '@fp/pages/publications/services'
 import { BreadcrumbsComponent } from '@fp/ui/breadcrumbs'
@@ -23,6 +24,7 @@ import { SubscriptionFormComponent } from '@fp/ui/subscription-form'
     NgOptimizedImage,
     SearchInputComponent,
     SubscriptionFormComponent,
+    TagsPipe,
   ],
   templateUrl: './publications.component.html',
   styles: `

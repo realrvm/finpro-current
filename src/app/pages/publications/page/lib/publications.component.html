@@ -30,7 +30,7 @@
               context: {
                 $implicit: post.title,
                 id: post.id,
-                section: post.tags[0],
+                tag: post.tags,
                 subtitle: post.subtitle,
                 image: post.image || 'https://placehold.co/600x400',
                 date: post.created_at,
@@ -57,7 +57,7 @@
               context: {
                 $implicit: news.title,
                 date: news.created_at,
-                subtitle: news.subtitle,
+                tag: news.tags,
               }
             "
           />
@@ -77,23 +77,28 @@
   let-subtitle="subtitle"
   let-image="image"
 >
-  <div class="bg-white flex flex-col pb-10 cursor-pointer" (click)="goToPost(id)" (keypress)="goToPost(id)" tabindex="0">
+  <div
+    class="bg-white flex flex-col pb-10 cursor-pointer"
+    (click)="goToPost(id)"
+    (keypress)="goToPost(id)"
+    tabindex="0"
+  >
     <div class="h-[239px] w-full relative mb-4">
       <img [ngSrc]="image" alt="search result" class="object-cover" fill priority />
     </div>
     <div class="flex items-center gap-5 mb-4">
       <span class="grid place-items-center w-[108px] h-[34px] bg-orange text-bkgrnd">{{ date }}</span>
-      <span class="text-orange text-md">{{ tag }}</span>
+      <span class="text-orange text-md">{{ tag | tags }}</span>
     </div>
     <h4 class="font-semibold text-[23px] leading-tight mb-5">{{ title }}</h4>
     <p class="text-md leading-normal">{{ subtitle }}</p>
   </div>
 </ng-template>
 
-<ng-template #mainNewsCard let-title let-date="date" let-subtitle="subtitle">
+<ng-template #mainNewsCard let-title let-date="date" let-tag="tag">
   <div class="border-t border-t-light-grey flex flex-col py-9">
     <span class="text-sm text-grey-indicator mb-3">{{ date }}</span>
     <h4 class="font-semibold mb-7 text-[23px] leading-tight">{{ title }}</h4>
-    <span class="text-sm text-orange">{{ subtitle }}</span>
+    <span class="text-sm text-orange">{{ tag | tags }}</span>
   </div>
 </ng-template>

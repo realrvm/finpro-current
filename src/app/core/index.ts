@@ -1,4 +1,5 @@
 export * from './lib/common/save-html.pipe'
+export * from './lib/common/tags.pipe'
 export * from './lib/constants/constants'
 export * from './lib/constants/enums'
 export * from './lib/hammer/hammer'
