@@ -1,0 +1,23 @@
+:host {
+  @apply block;
+
+  ::ng-deep .p-checkbox-box {
+    @apply border border-grey-strok;
+  }
+
+  ::ng-deep .p-checkbox-box.p-highlight {
+    @apply border border-transparent bg-orange;
+  }
+
+  ::ng-deep .p-checkbox-box.p-focus {
+    @apply shadow-none border border-orange;
+  }
+
+  ::ng-deep .p-inputtext {
+    @apply border border-grey-strok;
+  }
+
+  ::ng-deep .p-inputtext:focus {
+    @apply border border-orange;
+  }
+}
