@@ -18,7 +18,7 @@ npm ci
 - development mode
 
 ```shell
-npm run
+npm start
 ```
 - production mode
 
