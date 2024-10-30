@@ -25,5 +25,9 @@ export class PublicationsService {
     return this.apiService.get('api/v1/publications/post/')
   }
 
+  public getPost(id: number): Observable<PublicationsPost> {
+    return this.apiService.get(`api/v1/publications/post/${id}`)
+  }
+
   public posts = toSignal(this.getPosts(), { initialValue: [] })
 }
