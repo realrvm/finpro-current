@@ -64,6 +64,12 @@ export class PublicationsComponent implements OnInit {
         return { ...btn, isActive: false }
       })
     })
+
+    if (id === -1) {
+      this.posts.set(this.publicationsService.posts())
+    } else {
+      this.posts.set(this.publicationsService.posts().filter((post) => post.category.id === id))
+    }
   }
 
   public goToPost(id: string): void {

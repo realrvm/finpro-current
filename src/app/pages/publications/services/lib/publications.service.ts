@@ -12,6 +12,7 @@ export class PublicationsService {
 
   public getCategories(): Observable<PublicationsCategory[]> {
     return this.apiService.get<PublicationsCategory[]>('api/v1/publications/categories/').pipe(
+      map((items) => [{ id: -1, title: 'Все', children: [] }, ...items]),
       map((cat) =>
         cat.map((item, index) => {
           return index ? { ...item, isActive: false } : { ...item, isActive: true }
